@@ -1,0 +1,7 @@
+string = "This Python For Beginners Course Teaches You The Python Language Fast. Includes Python Online Training With Python 3"
+
+voweles = frozenset("aeiou")
+
+characterList = set(string).difference(voweles)
+
+print(sorted(characterList))

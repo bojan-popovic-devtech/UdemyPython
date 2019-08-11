@@ -1,0 +1,1 @@
+print("Beograd".strip('ad')) #removes from begining or the end

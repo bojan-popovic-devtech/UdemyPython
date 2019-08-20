@@ -31,7 +31,7 @@ for keyRow in keys:
         col += key[1]
     row +=1
 mainWindow.update()
-mainWindow.minsize(keyPad.winfro_witdh() + mainWindowPadding, result.)
+mainWindow.minsize(keyPad.winfro_witdh() + mainWindowPadding, result.update())
 mainWindow.mainloop()
 
 

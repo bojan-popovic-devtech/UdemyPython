@@ -22,7 +22,7 @@ def load_images(card_images):
 
 
 def deal_card(frame):
-    next_card = deck.pop()
+    next_card = deck.pop(0)
     deck.append(next_card)
     tkinter.Label(frame, image=next_card[1], relief='raised').pack(side='left')
     return next_card
@@ -85,6 +85,13 @@ def deal_player():
     #     result_text.set("Dealer wins!")
 
 
+def initial_deal():
+    deal_player()
+    dealer_hand.append( deal_card( dealer_card_frame ) )
+    dealer_score_label.set( score_hand( dealer_hand ) )
+    deal_player()
+
+
 def new_game():
     global dealer_card_frame
     global player_card_frame
@@ -104,10 +111,17 @@ def new_game():
 
     dealer_hand = []
     player_hand = []
-    deal_player()
-    dealer_hand.append(deal_card(dealer_card_frame))
-    dealer_score_label.set(score_hand(dealer_hand))
-    deal_player()
+    initial_deal()
+
+
+def shuffle():
+        random.shuffle(deck)
+
+
+def play():
+    initial_deal()
+    mainWindow.mainloop()
+
 
 
 mainWindow = tkinter.Tk()
@@ -155,15 +169,18 @@ newgame_button.grid(row=0, column=2)
 cards = []
 load_images(cards)
 print(cards)
-deck = list(cards)
+deck = list(cards) + list(cards) + list(cards)
 
-random.shuffle(deck)
+shuffle()
+
+dealer_hand = []
+player_hand = []
+
+if __name__ == "__main__":
+    play()
 
 
-new_game()
 
-
-mainWindow.mainloop()
 
 
 # svg = rsvg.Handle(file='cards.svg')
